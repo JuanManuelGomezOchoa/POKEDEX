@@ -11,5 +11,5 @@ class ModelFactory:
             "pokemon_favorites": PokemonFavorites
         }
         if collection_name in models:
-            return models[collection_name]()
-        raise ValueError(f"La coleccion enviada:{collection_name} no existe")
+            return models[collection_name]
+        raise ValueError(f"La colección enviada: {collection_name} no existe")

@@ -17,7 +17,7 @@ class UserSchema(Schema):
         }
     )
 
-    email = fields.Str(
+    email = fields.Email(
         required=True,
         validate=lambda x: "@utma.edu.mx" in x,
         error_messages={
