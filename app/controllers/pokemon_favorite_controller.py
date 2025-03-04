@@ -24,10 +24,12 @@ pok_fav_model= ModelFactory.get_model("pokemon_favorites")
 @bp.route("/", methods=["POST"])
 @jwt_required()
 def create():
+    user_id = get_jwt_identity()
     try:
         data=request.json
 
-        data= pok_fav_schema.validate(data)
+        data= pok_fav_schema.load(data)
+        data["user_id"] = user_id
         pokFav_id=pok_fav_model.create(data) #Creamos el usuario, regres aun OBJ ID
         return RM.succes({"pokFav_id":pokFav_id}) #Mandamos respuesta json con el obj ide en texto
 
